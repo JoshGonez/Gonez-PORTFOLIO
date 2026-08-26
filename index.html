@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Josh Vincent | Portfolio</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --background: #0a0a0a;
+            --card: #111111;
+            --white: #f5f5f5;
+            --gray: #999999;
+            --light-gray: #cccccc;
+            --border: #252525;
+            --accent: #B8A1FF;
+        }
+
+        body {
+            background: var(--background);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 65px;
+
+            background: rgba(10, 10, 10, 0.95);
+
+            border-bottom: 1px solid var(--border);
+
+            z-index: 1000;
+        }
+
+
+        .home {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            padding: 80px 8% 50px;
+
+            overflow: hidden;
+        }
+
+
+        .home-content {
+            width: 55%;
+
+            position: relative;
+
+            z-index: 3;
+        }
+
+        .home-small {
+            color: var(--accent);
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            margin-bottom: 15px;
+        }
+
+        .home-content h1 {
+            color: var(--white);
+
+            font-size: clamp(42px, 5.5vw, 72px);
+
+            line-height: 1;
+
+            font-weight: 750;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 20px;
+        }
+
+        .home-content h1 span {
+            color: var(--accent);
+        }
+
+        .home-subtitle {
+            font-size: 17px;
+
+            color: var(--light-gray);
+
+            margin-bottom: 25px;
+
+            line-height: 1.5;
+        }
+
+        .home-subtitle span {
+            color: var(--accent);
+
+            font-weight: 600;
+        }
+
+
+        .home-buttons {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 25px;
+        }
+
+        .home-buttons a {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            color: var(--gray);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            border: 1px solid var(--border);
+
+            border-radius: 3px;
+
+            transition: 0.3s;
+        }
+
+        .home-buttons a:hover,
+        .home-buttons a.active {
+            color: var(--accent);
+
+            border-color: var(--accent);
+        }
+
+
+        .social-icons {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 5px;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: var(--white);
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+
+            border-color: var(--accent);
+
+            transform: translateY(-3px);
+        }
+
+
+        .home-image {
+            position: absolute;
+
+            right: 8%;
+
+            bottom: 0;
+
+            width: 38%;
+
+            height: 72%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-end;
+
+            z-index: 1;
+
+            pointer-events: none;
+        }
+
+        .home-image img {
+            width: auto;
+
+            height: 100%;
+
+            max-width: 100%;
+
+            object-fit: contain;
+
+            object-position: center bottom;
+
+            filter: none;
+
+            opacity: 0.95;
+
+            /* Soft fade only */
+            -webkit-mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    black 8%,
+                    black 82%,
+                    transparent 100%
+                );
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    black 8%,
+                    black 82%,
+                    transparent 100%
+                );
+        }
+
+
+        #about {
+            min-height: 100vh;
+
+            padding: 110px 8%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--accent);
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: var(--white);
+
+            font-size: 40px;
+
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+        }
+
+
+        .about-container {
+            width: 100%;
+
+            max-width: 1050px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 65px;
+        }
+
+
+        .about-picture {
+            width: 300px;
+
+            height: 360px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid var(--border);
+
+            padding: 8px;
+
+            background: var(--card);
+        }
+
+        .about-picture img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            border: 1px solid var(--border);
+        }
+
+
+        .about-content {
+            flex: 1;
+
+            text-align: left;
+        }
+
+        .about-text {
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            font-size: 14px;
+        }
+
+
+        .page-section {
+            min-height: 100vh;
+
+            padding: 100px 8%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-heading p {
+            color: var(--accent);
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            color: var(--white);
+
+            font-size: 40px;
+        }
+
+        .section-heading h2 span {
+            color: var(--accent);
+        }
+
+
+        .cards {
+            width: 100%;
+
+            max-width: 1050px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            padding: 25px;
+
+            min-height: 340px;
+
+            border-radius: 4px;
+
+            background: var(--card);
+
+            border: 1px solid var(--border);
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+
+            transform: translateY(-5px);
+        }
+
+
+
+        .work-image {
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+
+            border: 1px solid var(--border);
+
+            margin-bottom: 18px;
+
+            background: #0d0d0d;
+        }
+
+        .card h3 {
+            color: var(--white);
+
+            font-size: 19px;
+
+            margin-bottom: 16px;
+        }
+
+
+
+        .card-btn {
+            display: inline-block;
+
+            padding: 9px 20px;
+
+            border-radius: 3px;
+
+            color: var(--accent);
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            border: 1px solid var(--accent);
+
+            transition: 0.3s;
+        }
+
+        .card-btn:hover {
+            background: var(--accent);
+
+            color: #000000;
+        }
+
+
+        footer {
+            padding: 25px;
+
+            text-align: center;
+
+            background: var(--background);
+
+            border-top: 1px solid var(--border);
+
+            color: #666666;
+
+            font-size: 11px;
+        }
+
+
+
+        @media (max-width: 850px) {
+
+            header {
+                display: none;
+            }
+
+
+
+            .home {
+                min-height: 100vh;
+
+                padding: 100px 7% 50px;
+
+                flex-direction: column;
+
+                justify-content: center;
+
+                text-align: center;
+            }
+
+            .home-content {
+                width: 100%;
+            }
+
+            .home-small {
+                font-size: 10px;
+            }
+
+            .home-content h1 {
+                font-size: 44px;
+
+                letter-spacing: -1.5px;
+            }
+
+            .home-subtitle {
+                font-size: 15px;
+            }
+
+            .home-buttons {
+                justify-content: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+
+
+            .home-image {
+                position: relative;
+
+                right: auto;
+
+                bottom: auto;
+
+                width: 100%;
+
+                height: 300px;
+
+                margin-top: 30px;
+
+                order: 2;
+            }
+
+            .home-image img {
+                width: 100%;
+
+                height: 100%;
+
+                object-fit: contain;
+
+                opacity: 0.9;
+            }
+
+
+            .about-container {
+                flex-direction: column;
+
+                gap: 40px;
+            }
+
+            .about-picture {
+                width: 260px;
+
+                height: 320px;
+            }
+
+            .about-content {
+                text-align: center;
+            }
+
+
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title,
+            .section-heading h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+
+    <header>
+    </header>
+
+
+
+
+    <section class="home" id="home">
+
+
+
+        <div class="home-content">
+
+            <p class="home-small">
+                WELCOME TO MY PORTFOLIO
+            </p>
+
+
+            <h1>
+                Josh Vincent
+                <span>P. Goñez</span>
+            </h1>
+
+
+            <p class="home-subtitle">
+                Aspiring IT Student |
+                <span>BSIT-3B</span>
+            </p>
+
+
+
+            <div class="home-buttons">
+
+                <a href="#about" class="active">
+                    ABOUT ME
+                </a>
+
+                <a href="#quiz">
+                    QUIZ
+                </a>
+
+                <a href="#laboratory">
+                    LAB
+                </a>
+
+                <a href="#exam">
+                    EXAM
+                </a>
+
+            </div>
+
+
+            <div class="social-icons">
+
+
+                <a
+                    href="https://www.facebook.com/Josh.Gonez0159"
+                    target="_blank"
+                    title="Facebook"
+                >
+                    f
+                </a>
+
+
+                <a
+                    href="https://www.instagram.com/josh_gonez/"
+                    target="_blank"
+                    title="Instagram"
+                >
+                    ◎
+                </a>
+
+
+
+                <a
+                    href="https://github.com/JoshGonez"
+                    target="_blank"
+                    title="GitHub"
+                >
+                    ◉
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="home-image">
+
+            <img
+                src="images/profile.jpg"
+                alt="Josh Vincent P. Goñez"
+            >
+
+        </div>
+
+    </section>
+
+
+    <section id="about">
+
+        <p class="section-label">
+            WHO I AM
+        </p>
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+
+        <div class="about-container">
+
+
+
+            <div class="about-picture">
+
+                <img
+                    src="images/profile2.jpg"
+                    alt="Josh Vincent P. Goñez"
+                >
+
+            </div>
+
+
+
+            <div class="about-content">
+
+                <p class="about-text">
+
+                    Hello! I'm Josh Vincent P. Goñez, a BSIT student with
+                    a strong interest in programming, technology, and web
+                    development.
+
+                    <br><br>
+
+                    I enjoy learning new things, exploring how technology
+                    works, and developing my skills through different
+                    projects and activities.
+
+                    <br><br>
+
+                    I have an interest in creating simple and user-friendly
+                    websites, writing programs, and learning different
+                    programming languages and technologies.
+
+                    I enjoy solving problems through code and improving
+                    my skills by practicing and trying new ideas.
+
+                    <br><br>
+
+                    As I continue my studies, I aim to gain more knowledge
+                    and experience in the field of Information Technology.
+
+                    I'm always open to learning, improving my abilities,
+                    and taking on new challenges that can help me grow as
+                    a future IT professional.
+
+                    <br><br>
+
+                    My goal is to use my skills and creativity to create
+                    useful, meaningful, and innovative projects.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="page-section" id="quiz">
+
+        <div class="section-heading">
+
+            <p>
+                ACADEMIC WORK
+            </p>
+
+            <h2>
+                My <span>Quizzes</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+
+            <div class="card">
+
+                <img
+                    src="images/quiz1.jpg"
+                    class="work-image"
+                    alt="Quiz 1"
+                >
+
+                <h3>
+                    Quiz 1
+                </h3>
+
+                <a
+                    href="images/quiz1.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW QUIZ
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="images/quiz2.jpg"
+                    class="work-image"
+                    alt="Quiz 2"
+                >
+
+                <h3>
+                    Quiz 2
+                </h3>
+
+                <a
+                    href="images/quiz2.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW QUIZ
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <img
+                    src="images/quiz3.jpg"
+                    class="work-image"
+                    alt="Quiz 3"
+                >
+
+                <h3>
+                    Quiz 3
+                </h3>
+
+                <a
+                    href="images/quiz3.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW QUIZ
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="page-section" id="laboratory">
+
+        <div class="section-heading">
+
+            <p>
+                MY PROJECTS
+            </p>
+
+            <h2>
+                My <span>Laboratory</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+
+            <div class="card">
+
+                <img
+                    src="images/lab1.jpg"
+                    class="work-image"
+                    alt="Laboratory 1"
+                >
+
+                <h3>
+                    Laboratory 1
+                </h3>
+
+                <a
+                    href="images/lab1.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW LAB
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <img
+                    src="images/lab2.jpg"
+                    class="work-image"
+                    alt="Laboratory 2"
+                >
+
+                <h3>
+                    Laboratory 2
+                </h3>
+
+                <a
+                    href="images/lab2.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW LAB
+                </a>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <img
+                    src="images/lab3.jpg"
+                    class="work-image"
+                    alt="Laboratory 3"
+                >
+
+                <h3>
+                    Laboratory 3
+                </h3>
+
+                <a
+                    href="images/lab3.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW LAB
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <section class="page-section" id="exam">
+
+        <div class="section-heading">
+
+            <p>
+                ACADEMIC ASSESSMENTS
+            </p>
+
+            <h2>
+                My <span>Exams</span>
+            </h2>
+
+        </div>
+
+
+        <div class="cards">
+
+
+
+            <div class="card">
+
+                <img
+                    src="images/prelim.jpg"
+                    class="work-image"
+                    alt="Prelim Exam"
+                >
+
+                <h3>
+                    Prelim Exam
+                </h3>
+
+                <a
+                    href="images/prelim.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW EXAM
+                </a>
+
+            </div>
+
+
+            <!-- MIDTERM -->
+
+            <div class="card">
+
+                <img
+                    src="images/midterm.jpg"
+                    class="work-image"
+                    alt="Midterm Exam"
+                >
+
+                <h3>
+                    Midterm Exam
+                </h3>
+
+                <a
+                    href="images/midterm.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW EXAM
+                </a>
+
+            </div>
+
+
+            <!-- FINAL -->
+
+            <div class="card">
+
+                <img
+                    src="images/final.jpg"
+                    class="work-image"
+                    alt="Final Exam"
+                >
+
+                <h3>
+                    Final Exam
+                </h3>
+
+                <a
+                    href="images/final.jpg"
+                    target="_blank"
+                    class="card-btn"
+                >
+                    VIEW EXAM
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+
+
+    </footer>
+
+
+</body>
+</html
